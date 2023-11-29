@@ -103,7 +103,7 @@ def downloadAllTickers(tickers, start, end, period='d', _filter=None,
         Group by 'ticker' or 'column' (default)
 
     """
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10000) as executor:
         executor.map(partial(handle_data, start=start, end=end,
                              period=period, _filter=_filter),
                      tickers)
@@ -137,7 +137,16 @@ if __name__ == "__main__":
 
     start = '2023-05-01'
     end = '2023-05-02'
-    tickers = ["CHIS", "CLIX"]
+    tickers = ['ACES', 'AMJ', 'AMLP', 'AMNA', 'AMND', 'AMTR', 'AMUB', 'AMZA', 'ATMP',
+       'BNE', 'CHIE', 'CNRG', 'CRAK', 'CTEC', 'CTEX', 'DIG', 'DRIP', 'DRLL',
+       'DUG', 'EINC', 'EMLP', 'ENFR', 'ENRG', 'ERTH', 'ERX', 'ERY', 'FAN',
+       'FCG', 'FENY', 'FILL', 'FRNW', 'FTXN', 'FXN', 'GCLN', 'GUSH', 'HDRO',
+       'HJEN', 'HYDR', 'ICLN', 'IEO', 'IEZ', 'IXC', 'IYE', 'KLNE', 'KWT',
+       'LCTD', 'LNGG', 'MLPA', 'MLPB', 'MLPO', 'MLPR', 'MLPX', 'NBCT', 'NETZ',
+       'NLR', 'NRGD', 'NRGU', 'NTZG', 'NZAC', 'NZUS', 'OIH', 'PBD', 'PBW',
+       'PSCE', 'PXE', 'PXI', 'PXJ', 'QCLN', 'RAYS', 'RNRG', 'RNWZ', 'RSPG',
+       'SMOG', 'SOLR', 'TAN', 'TPYP', 'UMI', 'USAI', 'VCLN', 'VDE', 'VMAT',
+       'WNDY', 'XES', 'XLE', 'XOP']
 
     start_time = time.time()
     downloadAllTickers(tickers, start=start, end=end)
