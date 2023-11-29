@@ -103,7 +103,7 @@ def downloadAllTickers(tickers, start, end, period='d', _filter=None,
         Group by 'ticker' or 'column' (default)
 
     """
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         executor.map(partial(handle_data, start=start, end=end,
                              period=period, _filter=_filter),
                      tickers)
